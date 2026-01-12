@@ -1,0 +1,768 @@
+.profile-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--background);
+  color: var(--text-white);
+  padding: 20px;
+  gap: 0;
+}
+
+/* Profile Header */
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 0 0 24px 0;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--outline-navy);
+  flex-shrink: 0;
+}
+
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 4px solid var(--outline-navy);
+  object-fit: cover;
+}
+
+.profile-name {
+  font-size: var(--heading-2-size);
+  font-weight: var(--heading-1-weight);
+  color: var(--text-white);
+  margin: 0;
+  text-align: center;
+}
+
+.profile-header .btn-update {
+  padding: 10px 24px;
+  background-color: var(--update-blue);
+  color: var(--text-white);
+  border: none;
+  border-radius: 8px;
+  font-size: var(--body-text-size);
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.profile-header .btn-update:hover {
+  opacity: 0.9;
+}
+
+/* Tabs Section */
+.tabs-section {
+  display: flex;
+  gap: 16px;
+  border-bottom: 1px solid var(--outline-navy);
+  width: 100%;
+  flex-shrink: 0;
+  margin-top: 24px;
+}
+
+.tab {
+  flex: 1;
+  padding: 12px 16px;
+  background: none;
+  border: none;
+  color: var(--label-grey);
+  font-size: var(--body-text-size);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-radius: 8px 8px 0 0;
+  text-align: center;
+}
+
+.tab:hover {
+  color: var(--text-white);
+}
+
+.tab.active {
+  background-color: var(--outline-navy);
+  color: var(--update-blue);
+}
+
+/* Content Section */
+.tabs-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px 0;
+  margin-bottom: 20px;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--label-grey);
+  font-size: var(--body-text-size);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--label-grey);
+  font-size: var(--body-text-size);
+}
+
+/* Tools Section */
+.tools-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.tools-header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-add-tool {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  background-color: var(--update-blue);
+  color: var(--text-white);
+  border: none;
+  font-size: 28px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-add-tool:hover {
+  opacity: 0.9;
+}
+
+.btn-add-tool:active {
+  transform: scale(0.95);
+}
+
+/* Neighborhoods Section */
+.neighborhoods-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Items List */
+.items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.item-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: var(--item-background);
+  border: 1px solid var(--outline-navy);
+  border-radius: 12px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.item-card:hover {
+  border-color: var(--update-blue);
+}
+
+.item-image {
+  width: 80px;
+  height: 80px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.item-name {
+  font-size: var(--heading-4-size);
+  font-weight: var(--heading-1-weight);
+  color: var(--text-white);
+  margin: 0;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-white);
+  width: fit-content;
+}
+
+/* Responsive */
+@media (min-width: 769px) {
+  .profile-container {
+    padding: 40px;
+    max-width: 430px;
+    margin: 0 auto;
+  }
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 1000;
+}
+
+.edit-profile-card {
+  width: 100%;
+  max-width: 328px;
+  background-color: var(--item-background);
+  border-radius: 12px;
+  padding: 40px 24px;
+}
+
+.modal-title {
+  font-size: var(--heading-2-size);
+  font-weight: var(--heading-1-weight);
+  color: var(--text-white);
+  margin: 0 0 24px 0;
+  text-align: center;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.edit-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.edit-form .form-group label {
+  font-size: var(--label-text-size);
+  color: var(--label-grey);
+  font-weight: var(--label-text-weight);
+}
+
+.edit-form .form-group input {
+  padding: 12px 16px;
+  background-color: var(--background);
+  border: 1px solid var(--outline-navy);
+  border-radius: 8px;
+  color: var(--text-white);
+  font-size: var(--body-text-size);
+  transition: border-color 0.2s;
+}
+
+.edit-form .form-group input:focus {
+  outline: none;
+  border-color: var(--update-blue);
+}
+
+.photo-preview {
+  display: flex;
+  justify-content: center;
+}
+
+.preview-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 2px solid var(--outline-navy);
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.btn-cancel {
+  flex: 1;
+  padding: 12px 24px;
+  background-color: transparent;
+  border: 1px solid var(--outline-navy);
+  color: var(--text-white);
+  border-radius: 8px;
+  font-size: var(--body-text-size);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-cancel:hover:not(:disabled) {
+  border-color: var(--label-grey);
+}
+
+.btn-cancel:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.edit-profile-card .btn-update {
+  flex: 1;
+  padding: 12px 24px;
+  background-color: var(--update-blue);
+  color: var(--text-white);
+  border: none;
+  border-radius: 8px;
+  font-size: var(--body-text-size);
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.edit-profile-card .btn-update:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.edit-profile-card .btn-update:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Add Tool Modal */
+.add-tool-card {
+  width: 100%;
+  max-width: 328px;
+  background-color: var(--item-background);
+  border-radius: 12px;
+  padding: 40px 24px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.add-tool-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.add-tool-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.add-tool-form .form-group label {
+  font-size: var(--label-text-size);
+  color: var(--label-grey);
+  font-weight: var(--label-text-weight);
+}
+
+.add-tool-form .form-group input,
+.add-tool-form .form-group textarea {
+  padding: 12px 16px;
+  background-color: var(--background);
+  border: 1px solid var(--outline-navy);
+  border-radius: 8px;
+  color: var(--text-white);
+  font-size: var(--body-text-size);
+  font-family: inherit;
+  transition: border-color 0.2s;
+  resize: vertical;
+}
+
+.add-tool-form .form-group input::placeholder,
+.add-tool-form .form-group textarea::placeholder {
+  color: var(--label-grey);
+}
+
+.add-tool-form .form-group input:focus,
+.add-tool-form .form-group textarea:focus {
+  outline: none;
+  border-color: var(--update-blue);
+}
+
+.add-tool-form .form-group input:disabled,
+.add-tool-form .form-group textarea:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.add-tool-card .photo-preview {
+  display: flex;
+  justify-content: center;
+}
+
+.add-tool-card .preview-image {
+  width: 100%;
+  height: 150px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid var(--outline-navy);
+}
+
+.add-tool-card .modal-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.add-tool-card .btn-create {
+  flex: 1;
+  padding: 12px 24px;
+  background-color: var(--create-green);
+  color: var(--text-white);
+  border: none;
+  border-radius: 8px;
+  font-size: var(--body-text-size);
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.add-tool-card .btn-create:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.add-tool-card .btn-create:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Tool Details Modal */
+.tool-details-card {
+  width: 100%;
+  max-width: 400px;
+  background-color: var(--item-background);
+  border-radius: 12px;
+  padding: 0;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.4);
+  border: none;
+  border-radius: 50%;
+  color: var(--text-white);
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  transition: background-color 0.2s;
+  z-index: 10;
+}
+
+.modal-close-btn:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.tool-details-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 12px 12px 0 0;
+}
+
+.tool-details-title {
+  font-size: var(--heading-1-size);
+  font-weight: var(--heading-1-weight);
+  color: var(--text-white);
+  margin: 0;
+  padding: 24px 24px 0 24px;
+}
+
+.tool-details-description {
+  font-size: var(--body-text-size);
+  color: var(--label-grey);
+  margin: 0;
+  padding: 12px 24px;
+  line-height: 1.6;
+}
+
+.tool-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  padding: 24px;
+  border-top: 1px solid var(--outline-navy);
+  border-bottom: 1px solid var(--outline-navy);
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.info-label {
+  font-size: var(--label-text-size);
+  color: var(--label-grey);
+  font-weight: var(--label-text-weight);
+  text-transform: uppercase;
+}
+
+.info-value {
+  font-size: var(--body-text-size);
+  color: var(--text-white);
+  font-weight: 600;
+  margin: 0;
+}
+
+.tool-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px;
+}
+
+.btn-delete {
+  padding: 12px 24px;
+  background-color: var(--delete-red);
+  color: var(--text-white);
+  border: none;
+  border-radius: 8px;
+  font-size: var(--body-text-size);
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.btn-delete:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.btn-delete:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.tool-actions .btn-update {
+  padding: 12px 24px;
+  background-color: var(--update-blue);
+  color: var(--text-white);
+  border: none;
+  border-radius: 8px;
+  font-size: var(--body-text-size);
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.tool-actions .btn-update:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.tool-actions .btn-update:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+/* Neighborhood Details Modal */
+.neighborhood-details-card {
+  width: 100%;
+  max-width: 400px;
+  background-color: var(--item-background);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border: 1px solid var(--outline-navy);
+}
+
+.neighborhood-details-image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.neighborhood-details-title {
+  color: var(--text-white);
+  font-size: var(--heading-2-size);
+  font-weight: 600;
+  margin: 0;
+}
+
+.details-box {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.detail-label {
+  color: var(--label-grey);
+  font-size: var(--label-text-size);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.detail-value {
+  color: var(--text-white);
+  font-size: var(--body-text-size);
+  font-weight: 500;
+  margin: 0;
+  word-break: break-all;
+}
+
+.neighborhood-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.neighborhood-actions .btn-update {
+  padding: 12px 24px;
+  background-color: var(--update-blue);
+  color: var(--text-white);
+  border: none;
+  border-radius: 8px;
+  font-size: var(--body-text-size);
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.neighborhood-actions .btn-update:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.neighborhood-actions .btn-update:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.neighborhood-actions .btn-delete {
+  padding: 12px 24px;
+  background-color: var(--delete-red);
+  color: var(--text-white);
+  border: none;
+  border-radius: 8px;
+  font-size: var(--body-text-size);
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.neighborhood-actions .btn-delete:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.neighborhood-actions .btn-delete:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* QR Modal */
+.qr-modal-card {
+  width: 100%;
+  max-width: 400px;
+  background-color: var(--item-background);
+  border-radius: 12px;
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  border: 1px solid var(--outline-navy);
+}
+
+.qr-code-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.qr-code {
+  width: 200px;
+  height: 200px;
+  background-color: white;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.qr-text {
+  color: var(--label-grey);
+  font-size: var(--label-text-size);
+  margin: 0;
+}
+
+.qr-modal-title {
+  color: var(--text-white);
+  font-size: var(--heading-2-size);
+  font-weight: 600;
+  text-align: center;
+  margin: 0;
+}
+
+.btn-continue {
+  width: 100%;
+  background-color: var(--create-green);
+  color: white;
+  border: none;
+  padding: 14px 24px;
+  border-radius: 8px;
+  font-size: var(--body-text-size);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-continue:hover {
+  background-color: #16a34a;
+}
+
+.btn-continue:active {
+  background-color: #15803d;
+}
+
+/* My Shed Button */
+.btn-my-shed {
+  background-color: var(--create-green);
+  color: white;
+  border: none;
+  padding: 14px 24px;
+  border-radius: 8px;
+  font-size: var(--body-text-size);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.btn-my-shed:hover {
+  background-color: #16a34a;
+}
+
+.btn-my-shed:active {
+  background-color: #15803d;
+}
