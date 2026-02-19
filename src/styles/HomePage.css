@@ -122,7 +122,9 @@
 /* Profile Section */
 .profile-section {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
   margin-top: 16px;
 }
 
@@ -147,6 +149,29 @@
 }
 
 .btn-profile:active {
+  transform: scale(0.98);
+}
+
+.btn-logout {
+  width: 100%;
+  max-width: 328px;
+  padding: 12px 24px;
+  background-color: var(--delete-red);
+  color: var(--text-white);
+  border: 1px solid var(--delete-red);
+  border-radius: 8px;
+  font-size: var(--body-text-size);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-logout:hover {
+  background-color: rgba(239, 68, 68, 0.8);
+  opacity: 0.9;
+}
+
+.btn-logout:active {
   transform: scale(0.98);
 }
 

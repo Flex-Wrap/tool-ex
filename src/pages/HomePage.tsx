@@ -1,8 +1,10 @@
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../hooks/useAuth';
 import '../styles/HomePage.css';
 
 export default function HomePage() {
   const navigate = useNavigate();
+  const { logout } = useAuth();
 
   return (
     <div className="home-container">
@@ -62,6 +64,15 @@ export default function HomePage() {
           onClick={() => navigate('/profile')}
         >
           My Profile
+        </button>
+        <button 
+          className="btn-logout"
+          onClick={() => {
+            logout();
+            navigate('/login');
+          }}
+        >
+          Logout
         </button>
       </div>
     </div>
