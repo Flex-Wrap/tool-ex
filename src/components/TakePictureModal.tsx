@@ -150,7 +150,7 @@ export const TakePictureModal: React.FC<TakePictureModalProps> = ({
             borderRadius: '6px',
             textAlign: 'center',
           }}>
-            📷 Loading camera...
+            Loading camera...
           </div>
         )}
 
