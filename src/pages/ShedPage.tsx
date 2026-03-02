@@ -3,6 +3,7 @@ import { useAuth } from '../hooks/useAuth';
 import { getSubcollection, getDocument } from '../utils/firebase/db';
 import { ToolCard } from '../components/ToolCard';
 import { ToolDetailsModal } from '../components/ToolDetailsModal';
+import BackButton from '../components/BackButton';
 import '../styles/ShedPage.css';
 
 interface Tool {
@@ -82,6 +83,7 @@ export default function ShedPage() {
 
   return (
     <div className="shed-container">
+      <BackButton />
       <div className="shed-header">
         <h1 className="shed-title">The Shed</h1>
         <p className="shed-subtitle">Tools from your neighborhoods</p>

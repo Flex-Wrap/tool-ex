@@ -1,10 +1,23 @@
+import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import '../styles/HomePage.css';
 
 export default function HomePage() {
   const navigate = useNavigate();
-  const { logout } = useAuth();
+  const { logout, user } = useAuth();
+
+  useEffect(() => {
+    // If user is not authenticated, redirect to login
+    if (!user) {
+      navigate('/login');
+    }
+  }, [user, navigate]);
+
+  const handleLogout = () => {
+    logout();
+    navigate('/login');
+  };
 
   return (
     <div className="home-container">
@@ -67,10 +80,7 @@ export default function HomePage() {
         </button>
         <button 
           className="btn-logout"
-          onClick={() => {
-            logout();
-            navigate('/login');
-          }}
+          onClick={handleLogout}
         >
           Logout
         </button>

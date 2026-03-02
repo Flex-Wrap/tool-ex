@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { getDocument, updateDocument, createSubcollectionDocument } from '../utils/firebase/db';
 import QrScanner from 'qr-scanner';
+import BackButton from '../components/BackButton';
 import '../styles/JoinNeighborhoodPage.css';
 
 export default function JoinNeighborhoodPage() {
@@ -50,7 +51,8 @@ export default function JoinNeighborhoodPage() {
         {
           onDecodeError: (error) => {
             // Silently ignore decode errors - they happen frequently while scanning
-            console.log('Decode attempt:', error?.message || 'scanning...');
+            const errorMessage = error instanceof Error ? error.message : 'scanning...';
+            console.log('Decode attempt:', errorMessage);
           },
           preferredCamera: 'environment',
           highlightCodeOutline: true,
@@ -98,7 +100,7 @@ export default function JoinNeighborhoodPage() {
       if (!password.trim()) throw new Error('Password is required');
 
       // Fetch neighborhood document
-      const neighborhood = await getDocument('Neighbourhoods', neighborhoodId);
+      const neighborhood = await getDocument('Neighbourhoods', neighborhoodId) as any;
 
       if (!neighborhood) {
         throw new Error('Neighborhood not found');
@@ -140,6 +142,7 @@ export default function JoinNeighborhoodPage() {
 
   return (
     <div className="join-neighborhood-container">
+      <BackButton />
       <div className="join-neighborhood-content">
         {/* Header */}
         <div className="neighborhood-header">

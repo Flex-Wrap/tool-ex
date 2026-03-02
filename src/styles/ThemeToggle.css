@@ -1,0 +1,66 @@
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background-color: var(--item-background);
+  border: 2px solid var(--outline-navy);
+  border-radius: 24px;
+  padding: 8px 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+.theme-toggle:hover {
+  border-color: var(--update-blue);
+}
+
+.toggle-labels {
+  display: flex;
+  gap: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.toggle-label {
+  font-size: var(--label-text-size);
+  font-weight: var(--label-text-weight);
+  min-width: 28px;
+  text-align: center;
+  transition: opacity 0.3s ease;
+  color: var(--text-white);
+}
+
+.toggle-label.dark {
+  opacity: 0;
+}
+
+.toggle-label.light {
+  opacity: 1;
+}
+
+.theme-toggle.light .toggle-label.dark {
+  opacity: 1;
+}
+
+.theme-toggle.light .toggle-label.light {
+  opacity: 0;
+}
+
+.toggle-circle {
+  position: absolute;
+  left: 4px;
+  width: 24px;
+  height: 24px;
+  background-color: var(--update-blue);
+  border-radius: 50%;
+  transition: left 0.3s ease;
+  z-index: 0;
+}
+
+.theme-toggle.light .toggle-circle {
+  left: 44px;
+}

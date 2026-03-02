@@ -8,6 +8,8 @@ import { ToolDetailsModal } from '../components/ToolDetailsModal';
 import { ToolCard } from '../components/ToolCard';
 import { NeighborhoodCard } from '../components/NeighborhoodCard';
 import { NeighborhoodDetailsModal } from '../components/NeighborhoodDetailsModal';
+import ThemeToggle from '../components/ThemeToggle';
+import BackButton from '../components/BackButton';
 import '../styles/ProfilePage.css';
 
 interface Tool {
@@ -104,10 +106,12 @@ export default function ProfilePage() {
 
   return (
     <div className="profile-container">
+      <BackButton />
+      <ThemeToggle />
       {/* Profile Header */}
       <div className="profile-header">
         <img
-          src={user?.photoURL || 'https://via.placeholder.com/120?text=No+Photo'}
+          src={user?.photoURL || 'https://static.vecteezy.com/system/resources/thumbnails/053/964/117/small/a-silhouette-of-a-person-with-a-circular-head-and-a-minimalistic-body-structure-showcasing-a-simple-design-png.png'}
           alt="Profile"
           className="profile-avatar"
         />

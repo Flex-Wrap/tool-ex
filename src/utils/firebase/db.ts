@@ -13,7 +13,7 @@ import {
 import { db } from './config';
 
 // Get a single document by ID
-export const getDocument = async (collectionName: string, docId: string) => {
+export const getDocument = async (collectionName: string, docId: string): Promise<DocumentData | null> => {
   try {
     const docRef = doc(db, collectionName, docId);
     const docSnap = await getDoc(docRef);

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { createDocument } from '../utils/firebase/db';
+import BackButton from '../components/BackButton';
 import '../styles/ToolboxPage.css';
 
 export default function ToolboxPage() {
@@ -55,6 +56,7 @@ export default function ToolboxPage() {
 
   return (
     <div className="toolbox-container">
+      <BackButton />
       <div className="toolbox-card">
         <h1 className="toolbox-title">Add a Tool</h1>
         <p className="toolbox-subtitle">Share your tools with your neighbors</p>

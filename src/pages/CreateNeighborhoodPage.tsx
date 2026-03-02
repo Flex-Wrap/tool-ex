@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { createDocument, createSubcollectionDocument } from '../utils/firebase/db';
+import BackButton from '../components/BackButton';
 import '../styles/CreateNeighborhoodPage.css';
 
 export default function CreateNeighborhoodPage() {
@@ -69,6 +70,7 @@ export default function CreateNeighborhoodPage() {
   if (successData) {
     return (
       <div className="success-overlay">
+        <BackButton />
         <div className="success-card">
           {/* QR Code */}
           <div className="qr-code-container">
@@ -104,6 +106,7 @@ export default function CreateNeighborhoodPage() {
 
   return (
     <div className="create-neighborhood-container">
+      <BackButton />
       <div className="create-neighborhood-content">
         {/* Header */}
         <div className="neighborhood-header">

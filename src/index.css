@@ -10,15 +10,22 @@
   line-height: 1.5;
   font-weight: 400;
 
-  /* Color Palette */
+  /* Color Palette - Dark Theme (Default) */
   --background: #1A2332;
   --outline-navy: #264A7C;
   --update-blue: #3B82F6;
+  --update-blue-hover: #2563eb;
+  --update-blue-active: #1d4ed8;
   --text-white: #FFFFFF;
   --item-background: #253447;
   --create-green: #22C55E;
+  --create-green-hover: #16a34a;
+  --create-green-active: #15803d;
   --delete-red: #EF4444;
   --label-grey: #94A3B8;
+  --button-text: #FFFFFF;
+  --tab-active-bg: #264A7C;
+  --tab-active-color: #3B82F6;
 
   /* Typography */
   --heading-1-size: 32px;
@@ -44,6 +51,18 @@
   --label-text-size: 12px;
   --label-text-weight: 500;
   --label-text-line-height: 1.4;
+}
+
+/* Light Theme */
+:root.light-theme {
+  --background: #F4F4F4;
+  --outline-navy: #7397D0;
+  --text-white: #1A1A1A;
+  --item-background: #DAE5F2;
+  --label-grey: #464646;
+  --button-text: #FFFFFF;
+  --tab-active-bg: #3B82F6;
+  --tab-active-color: #1A1A1A;
 }
 
 html,
@@ -140,15 +159,15 @@ button:active {
 
 button.btn-create {
   background-color: var(--create-green);
-  color: var(--text-white);
+  color: var(--button-text);
 }
 
 button.btn-update {
   background-color: var(--update-blue);
-  color: var(--text-white);
+  color: var(--button-text);
 }
 
 button.btn-delete {
   background-color: var(--delete-red);
-  color: var(--text-white);
+  color: var(--button-text);
 }
