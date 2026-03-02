@@ -1,12 +1,13 @@
 .profile-container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100dvh;
   background-color: var(--background);
   color: var(--text-white);
   padding: 20px;
   gap: 0;
   position: relative;
+  overflow: hidden;
 }
 
 /* Profile Header */
@@ -114,6 +115,17 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.tools-section::-webkit-scrollbar {
+  display: none;
+}
+
+.tools-section {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .tools-header {
@@ -150,6 +162,17 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.neighborhoods-section::-webkit-scrollbar {
+  display: none;
+}
+
+.neighborhoods-section {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 /* Items List */

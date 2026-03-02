@@ -1,17 +1,19 @@
 .shed-container {
-  min-height: 100vh;
+  height: 100dvh;
   background-color: var(--background);
   color: var(--text-white);
   padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 24px;
+  overflow: hidden;
 }
 
 .shed-header {
   text-align: center;
   padding-bottom: 20px;
   border-bottom: 1px solid var(--outline-navy);
+  flex-shrink: 0;
 }
 
 .shed-title {
@@ -81,6 +83,17 @@
   flex-direction: column;
   gap: 16px;
   padding: 20px 0;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.tools-grid::-webkit-scrollbar {
+  display: none;
+}
+
+.tools-grid {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 @media (min-width: 601px) {
