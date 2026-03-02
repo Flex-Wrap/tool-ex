@@ -31,8 +31,8 @@ export default function ThemeToggle() {
       aria-label="Toggle theme"
     >
       <div className="toggle-labels">
-        <span className="toggle-label dark">Dark</span>
-        <span className="toggle-label light">Light</span>
+        <span className="toggle-label dark">Light</span>
+        <span className="toggle-label light">Dark</span>
       </div>
       <div className="toggle-circle" />
     </button>

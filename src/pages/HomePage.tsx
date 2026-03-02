@@ -1,17 +1,38 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
+import { FeatureCard } from '../components/FeatureCard';
+import qrshareImg from '../assets/qrshare.png';
+import qrshareLightImg from '../assets/qrshare-light.png';
+import shakhandsImg from '../assets/shakehands.png';
+import shakehandsLightImg from '../assets/shakehands-light.png';
+import moneyzImg from '../assets/moneyz.png';
+import moneyzLightImg from '../assets/moneyz-light.png';
 import '../styles/HomePage.css';
 
 export default function HomePage() {
   const navigate = useNavigate();
   const { logout, user } = useAuth();
+  const [isDarkMode, setIsDarkMode] = useState(true);
 
   useEffect(() => {
     // If user is not authenticated, redirect to login
     if (!user) {
       navigate('/login');
     }
+    
+    // Check if light theme is applied
+    const isLightTheme = document.documentElement.classList.contains('light-theme');
+    setIsDarkMode(!isLightTheme);
+    
+    // Listen for theme changes
+    const observer = new MutationObserver(() => {
+      const isLight = document.documentElement.classList.contains('light-theme');
+      setIsDarkMode(!isLight);
+    });
+    
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    return () => observer.disconnect();
   }, [user, navigate]);
 
   const handleLogout = () => {
@@ -51,23 +72,25 @@ export default function HomePage() {
 
       {/* Features Section */}
       <div className="features-section">
-        <div className="feature-card">
-          <div className="feature-icon">⚒️</div>
-          <h3>Share Tools</h3>
-          <p>List your tools and make them available to neighbors</p>
-        </div>
-
-        <div className="feature-card">
-          <div className="feature-icon">💛</div>
-          <h3>Build Community</h3>
-          <p>Connect with neighbors and strengthen local bonds</p>
-        </div>
-
-        <div className="feature-card">
-          <div className="feature-icon">🏠</div>
-          <h3>Save Money</h3>
-          <p>Borrow instead of buying tools you rarely use</p>
-        </div>
+        <FeatureCard 
+          icon="⚒️"
+          title="Share Tools"
+          description="List your tools and make them available to neighbors"
+          watermarkImg={isDarkMode ? qrshareLightImg : qrshareImg}
+        />
+        <FeatureCard 
+          icon="💛"
+          title="Build Community"
+          description="Connect with neighbors and strengthen local bonds"
+          watermarkImg={isDarkMode ? shakehandsLightImg : shakhandsImg}
+          reversed
+        />
+        <FeatureCard 
+          icon="🏠"
+          title="Save Money"
+          description="Borrow instead of buying tools you rarely use"
+          watermarkImg={isDarkMode ? moneyzLightImg : moneyzImg}
+        />
       </div>
 
       {/* My Profile Button */}

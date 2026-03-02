@@ -41,7 +41,7 @@
 .profile-header .btn-update {
   padding: 10px 24px;
   background-color: var(--update-blue);
-  color: var(--text-white);
+  color: var(--button-text);
   border: none;
   border-radius: 8px;
   font-size: var(--body-text-size);
@@ -126,7 +126,7 @@
   height: 48px;
   border-radius: 8px;
   background-color: var(--update-blue);
-  color: var(--text-white);
+  color: var(--button-text);
   border: none;
   font-size: 28px;
   font-weight: 600;
@@ -306,7 +306,7 @@
   padding: 12px 24px;
   background-color: transparent;
   border: 1px solid var(--outline-navy);
-  color: var(--text-white);
+  color: var(--button-text);
   border-radius: 8px;
   font-size: var(--body-text-size);
   font-weight: 600;
@@ -327,7 +327,7 @@
   flex: 1;
   padding: 12px 24px;
   background-color: var(--update-blue);
-  color: var(--text-white);
+  color: var(--button-text);
   border: none;
   border-radius: 8px;
   font-size: var(--body-text-size);
@@ -427,7 +427,7 @@
   flex: 1;
   padding: 12px 24px;
   background-color: var(--create-green);
-  color: var(--text-white);
+  color: var(--button-text);
   border: none;
   border-radius: 8px;
   font-size: var(--body-text-size);
@@ -564,7 +564,7 @@
 .tool-actions .btn-update {
   padding: 12px 24px;
   background-color: var(--update-blue);
-  color: var(--text-white);
+  color: var(--button-text);
   border: none;
   border-radius: 8px;
   font-size: var(--body-text-size);

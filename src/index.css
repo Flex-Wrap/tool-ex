@@ -26,6 +26,7 @@
   --button-text: #FFFFFF;
   --tab-active-bg: #264A7C;
   --tab-active-color: #3B82F6;
+  --watermark-opacity: 0.8;
 
   /* Typography */
   --heading-1-size: 32px;
@@ -63,6 +64,7 @@
   --button-text: #FFFFFF;
   --tab-active-bg: #3B82F6;
   --tab-active-color: #1A1A1A;
+  --watermark-opacity: 0.3;
 }
 
 html,
