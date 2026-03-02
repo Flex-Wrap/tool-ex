@@ -43,18 +43,22 @@ export const uploadImage = async (
 export const deleteImage = async (imageUrl: string): Promise<void> => {
   try {
     // Extract the storage path from the download URL
+    // URL format: https://firebasestorage.googleapis.com/v0/b/{bucket}/o/{path}?alt=media&token=...
     const decodedUrl = decodeURIComponent(imageUrl);
-    const startIndex = decodedUrl.indexOf('/images%2F');
+    const startIndex = decodedUrl.indexOf('/images/');
     const endIndex = decodedUrl.indexOf('?');
     
     if (startIndex === -1) {
-      throw new Error('Invalid image URL');
+      throw new Error('Invalid image URL - could not find /images/ in path');
     }
     
     const storagePath = decodedUrl.substring(startIndex + 1, endIndex);
+    console.log('Deleting image at path:', storagePath);
+    
     const fileRef = ref(storage, storagePath);
     
     await deleteObject(fileRef);
+    console.log('Image deleted successfully');
   } catch (error) {
     console.error('Error deleting image:', error);
     throw error;

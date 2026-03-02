@@ -1,5 +1,6 @@
 import { useAuth } from '../hooks/useAuth';
 import { getSubcollection, deleteSubcollectionDocument } from '../utils/firebase/db';
+import { deleteImage } from '../utils/firebase/storage';
 
 interface Tool {
   id: string;
@@ -44,6 +45,16 @@ export const ToolDetailsModal: React.FC<ToolDetailsModalProps> = ({
     if (!window.confirm('Are you sure you want to delete this tool?')) return;
 
     try {
+      // Delete image from Firebase Storage if it exists
+      if (tool.image) {
+        try {
+          await deleteImage(tool.image);
+        } catch (err) {
+          console.error('Error deleting image:', err);
+          // Continue with tool deletion even if image deletion fails
+        }
+      }
+
       await deleteSubcollectionDocument('Users', user.uid, 'Tools', tool.id);
       
       const userTools = await getSubcollection('Users', user.uid, 'Tools') as Tool[];
